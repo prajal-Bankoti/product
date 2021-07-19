@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #addBox {
+      width: 500px;
+      height: 300px;
+      margin: auto;
+      margin-top: 100px;
+      background-color: deepskyblue;
+      text-align: center;
+    }
+    #inputBox {
+      margin: auto;
+      margin-top: 30px;
+      margin-left: 150px;
+      margin-right: 50px;
+    }
+
+    #submit {
+      margin-left: 190px;
+      width: 90px;
+      height: 30px;
+      border-radius: 9px;
+      margin-top: 40px;
+    }
+  </style>
+  <body>
+    <div id="show"></div>
+    <div id="addBox">
+      <input type="number" value="" id="inputBox" placeholder="cart number" />
+      <input type="number" value="" id="inputBox" placeholder=" date" />
+      <input type="number" value="" id="inputBox" placeholder="cvv" />
+      <input type="text" value="" id="inputBox" placeholder="name" />
+
+      <input type="submit" value="submit" id="submit" onclick="pay()" />
+    </div>
+  </body>
+</html>
+<script>
+  function pay() {
+    setInterval();
+    alert("you oder is placed");
+  }
+
+  // var interval = setInterval(pay(), 100);
+</script>

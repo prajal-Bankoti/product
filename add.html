@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #addBox {
+      width: 500px;
+      height: 300px;
+      margin: auto;
+      margin-top: 100px;
+      background-color: deepskyblue;
+    }
+    #inputBox {
+      margin: auto;
+      margin-top: 30px;
+      margin-left: 150px;
+      margin-right: 50px;
+      text-align: center;
+    }
+    #submit {
+      margin-top: 30px;
+      margin-left: 190px;
+      width: 90px;
+      height: 40px;
+      border-radius: 9px;
+    }
+  </style>
+  <body>
+    <div id="addBox">
+      <input type="text" name="" id="inputBox" placeholder="name" />
+      <input type="number" name="" id="inputBox" placeholder="phone" />
+      <input type="text" name="" id="inputBox" placeholder="addresh" />
+   
+      <input type="number" name="" id="inputBox" placeholder="pincode" />
+      <input id="submit" type="submit" value="submit" onclick=" payment()" />
+    
+  </body>
+</html>
+<script>
+     function payment() {
+    window.location.href = "payment.html";
+  }
+</script>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 20%);
+        grid-gap: 3%;
+        padding: 5px;
+        margin: auto;
+      }
+      #main_box {
+        width: 100%;
+        height: 50px;
+        background-color: deepskyblue;
+        margin-bottom: 30px;
+      }
+      #cart {
+        float: right;
+        margin-right: 50px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: white;
+        font-size: 25px;
+      }
+      #filter {
+        width: 100%;
+        height: 30px;
+        background-color: rgb(255, 255, 255);
+        margin-bottom: 30px;
+      }
+      #filter1 {
+        float: left;
+        font-weight: bold;
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main_box">
+      <div id="cart" onclick=" cart()">Cart</div>
+    </div>
+    <div id="filter">
+      <div id="filter1">filter</div>
+      <div id="filter1" onclick="sortupper()">lower to upper Price</div>
+      <div id="filter1" onclick="sortlower()">upper to lower Price</div>
+    </div>
+    <div id="box"></div>
+  </body>
+</html>
+<script>
+  function addPro() {
+    var product1 = [
+      {
+        name: "football",
+        img: "https://rukminim1.flixcart.com/image/612/612/jyxaw7k0/ball/8/3/m/430-5-21-9-attacker-1-vectorxhx5-football-vector-x-original-imafj24h7vdswzhg.jpeg?q=70",
+        price: 299,
+        img2: "https://rukminim1.flixcart.com/image/612/612/kp4difk0/ball/r/h/y/420-470-5-storm-niviafb353-football-nivia-original-imag3fdvg5vrezfc.jpeg?q=70",
+      },
+      {
+        name: "Shirt",
+        img: "https://rukminim1.flixcart.com/image/452/542/kq2o2vk0/shirt/7/b/c/free-cotton-polyester-blend-printed-shirt-unticheted-opina-original-imag45skmpw62kgh.jpeg?q=50",
+        price: 500,
+        img2: "https://rukminim1.flixcart.com/image/452/542/k69ncsw0/t-shirt/6/j/c/3xl-t15-seven-rocks-original-imafzrhthhpr4hne.jpeg?q=50",
+      },
+      {
+        name: "Redmi 9i",
+        img: "https://rukminim1.flixcart.com/image/612/612/kesv0y80/mobile/b/y/9/redmi-9i-mzb0815in-original-imafvehwghyuphbc.jpeg?q=70",
+        price: 11999,
+        img2: "https://rukminim1.flixcart.com/image/612/612/kklhbbk0/mobile/h/i/q/m3-mzb087ain-poco-original-imafzxf8zqkcgwfv.jpeg?q=70",
+      },
+      {
+        name: "Realme Narzo",
+        img: "https://rukminim1.flixcart.com/image/612/612/kq18n0w0/mobile/d/b/6/narzo-30-5g-rmx3242-realme-original-imag45yjub2vdrzx.jpeg?q=70",
+        price: 15999,
+        img2: "https://rukminim1.flixcart.com/image/612/612/kesv0y80/mobile/b/y/9/redmi-9i-mzb0815in-original-imafvehwghyuphbc.jpeg?q=70",
+      },
+      {
+        name: "T-Shirt",
+        img: "https://rukminim1.flixcart.com/image/452/542/kq2o2vk0/shirt/7/b/c/free-cotton-polyester-blend-printed-shirt-unticheted-opina-original-imag45skmpw62kgh.jpeg?q=50",
+        img2: "https://rukminim1.flixcart.com/image/452/542/khmbafk0-0/t-shirt/w/j/s/xs-t322-blwh-seven-rocks-original-imafxhagtyj2xvpn.jpeg?q=50",
+        price: 499,
+      },
+      {
+        name: "BesSheets",
+        img: "https://rukminim1.flixcart.com/image/612/612/k5e7o280/bedsheet/q/q/n/red-bedsheet-with-rangoli-design54-78432-flat-shyokand-original-imafbxd3bsjv4hgh.jpeg?q=70",
+        price: 299,
+        img2: "https://rukminim1.flixcart.com/image/612/612/bedsheet/w/c/s/sgh-1007-sgh-fitted-flat-sgh-1007-original-imaeeah3yphnk9fx.jpeg?q=70",
+      },
+    ];
+    if (localStorage.getItem("product1") == null) {
+      localStorage.setItem("product1", JSON.stringify(product1));
+    }
+
+    let arr;
+    arr = localStorage.getItem("product1");
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(localStorage.getItem("product1"));
+    }
+  }
+  addPro();
+  function addData(d) {
+    let data1 = d;
+    let data_div = document.getElementById("box");
+    data_div.innerHTML = null;
+    data1.forEach(function (el) {
+      data_div = document.getElementById("box");
+      var div = document.createElement("div");
+      let p_name = document.createElement("p");
+      p_name.innerHTML = el.name;
+      let p_rating = document.createElement("p");
+      p_rating.innerHTML = el.price;
+      let img1 = document.createElement("img");
+      img1.src = el.img;
+
+      img1.style.width = "50%";
+      img1.style.height = "50%";
+      img1.addEventListener("mouseover", function () {
+        img1.src = el.img2;
+      });
+      img1.addEventListener("mouseout", function () {
+        img1.src = el.img;
+      });
+      let btn = document.createElement("button");
+      btn.addEventListener("click", function () {
+        addtoVisited(el);
+      });
+
+      btn.textContent = "Add to Cart";
+
+      div.append(img1, p_name, p_rating, btn);
+      data_div.append(div);
+    });
+  }
+  addData(JSON.parse(localStorage.getItem("product1")));
+
+  function sortupper() {
+    let data2 = JSON.parse(localStorage.getItem("product1"));
+    data2 = data2.sort(function (a, b) {
+      return a.price - b.price;
+    });
+    addData(data2);
+  }
+
+  function sortlower() {
+    let data2 = JSON.parse(localStorage.getItem("product1"));
+    data2 = data2.sort(function (a, b) {
+      return b.price - a.price;
+    });
+    addData(data2);
+  }
+
+  function addtoVisited(obj) {
+    let arr;
+    arr = localStorage.getItem("cart1");
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(localStorage.getItem("cart1"));
+    }
+    console.log(name);
+
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].name === obj.name && arr[i].image === obj.image) {
+        alert("This item is already in card.");
+        var count = 0;
+      } else {
+        var count = 1;
+      }
+    }
+    if (count == 1 || count == null) {
+      arr.push(obj);
+      localStorage.setItem("cart1", JSON.stringify(arr));
+    }
+  }
+  function cart() {
+    window.location.href = "cart.html";
+  }
+</script>
